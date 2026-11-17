@@ -61,6 +61,18 @@
   .arrows marker path { fill: var(--arrow); stroke: none; opacity: .82; }
   .arrows marker.dashm path { fill: #b0683a; }
 
+  /* 用户收到的检测、验收报告：每张卡片外框的静态红色描边与光晕。 */
+  .report-boundaries {
+    position:absolute; inset:0; z-index:3; width:100%; height:100%;
+    overflow:visible; pointer-events:none;
+  }
+  .report-boundaries rect {
+    fill:none; vector-effect:non-scaling-stroke; stroke-linecap:round;
+    pointer-events:none;
+  }
+  .report-flow-base { stroke:#f13730; stroke-width:2.8; opacity:.78; }
+  .report-flow-halo { stroke:#ff3930; stroke-width:6; opacity:.25; filter:url(#reportEdgeGlow); }
+
   .node {
     position: absolute; z-index: 2;
     width: 150px; height: 300px; padding: 0;
@@ -310,7 +322,7 @@
 </style>
 </head>
 <body>
-  <div class="brand">工程师 App · 上门全流程<span style="margin-left:10px;font-size:11px;color:#778395">更新于 2026-11-14</span></div>
+  <div class="brand">工程师 App · 上门全流程<span style="margin-left:10px;font-size:11px;color:#778395">更新于 2026-11-17</span></div>
 
   <div class="viewport" id="viewport">
     <div class="stage" id="stage">
@@ -365,7 +377,7 @@
 <script>
   const base = "https://chuckcheck.github.io/app-flow-images/";
   const rawBase = "https://raw.githubusercontent.com/chuckcheck/app-flow-images/main/";
-  const EXTRA_IMAGES = { 74: "s70-order-completed-20261114.png", 72: "s65-claim-service-card-avatar-blurred-20261114.png", 73: "s66-save-service-card-avatar-blurred-20261114.png", 70: "s54-work-order-go-to-acceptance-20261114.png", 71: "s55-save-work-phone-reminder-20261114.png", 32: "s31-user-approved-report-20261113.png", 33: "s32-user-approved-report-fees-20261113.png", 29: "s28-user-confirm-detection-20261113.png", 26: "s25-user-report-detection-20261113.png", 27: "s26-user-report-warranty-fees-20261113.png", 28: "s27-user-report-compensation-notice-20261113.png", 23: "s22-report-disassembly-photo-20261113-v2.png", 8: "s08-service-confirmation-20261113.png", 9: "s09-official-account-guide-20261113.png", 41: "s41-more-functions-20261028.png", 69: "n29.jpg", 48: "s52-user-confirm-price-20261028.png", 0: "s00-safety-20261028.png", 17: "s17-confirm-product-20261028.png", 22: "s22-detection-report-20261028.png", 66: "s46-more-discounts-20261028.png", 67: "s47-direct-discount-20261028.png", 68: "s48-cost-discount-20261028.png", 44: "s49-confirm-cost-discount-20261028.png" };
+  const EXTRA_IMAGES = { 20: "s19-service-items-20261117.png", 74: "s70-order-completed-20261114.png", 72: "s65-claim-service-card-avatar-blurred-20261114.png", 73: "s66-save-service-card-avatar-blurred-20261114.png", 70: "s54-work-order-go-to-acceptance-20261114.png", 71: "s55-save-work-phone-reminder-20261114.png", 32: "s31-user-approved-report-20261113.png", 33: "s32-user-approved-report-fees-20261113.png", 29: "s28-user-confirm-detection-20261113.png", 26: "s25-user-report-detection-20261113.png", 27: "s26-user-report-warranty-fees-20261113.png", 28: "s27-user-report-compensation-notice-20261113.png", 23: "s22-report-disassembly-photo-20261113-v2.png", 8: "s08-service-confirmation-20261113.png", 9: "s09-official-account-guide-20261113.png", 41: "s41-more-functions-20261028.png", 69: "n29.jpg", 48: "s52-user-confirm-price-20261028.png", 0: "s00-safety-20261028.png", 17: "s17-confirm-product-20261028.png", 22: "s22-detection-report-20261028.png", 66: "s46-more-discounts-20261028.png", 67: "s47-direct-discount-20261028.png", 68: "s48-cost-discount-20261028.png", 44: "s49-confirm-cost-discount-20261028.png" };
   const LONG_IMAGES = { 5: "s05-confirm-arrival-long-redacted-20261113.png", 7: "s07-fee-standards-long-20261113.png", 47: "s51-user-discount-report-long-20261028.png", 45: "activity-discounts-long-20261028.png", 1: "s01-long-20261028.png", 11: "s11-long-20261028.png", 65: "fault-phenomenon-disassembly-20261028.png" };
   const MASKED = { 5: "s05m.jpg", 10: "s10m.jpg" };   // 姓名/工号/人像已打码
   // 用户手机上看到的页面（扫码确认 H5 / 公众号 / 推送的检测报告与验收报告 H5 / 支付）
@@ -593,6 +605,50 @@ const zones = [
       d.innerHTML = `<span class="zlabel"><i>■</i>${z.label}</span>`;
       canvas.appendChild(d);
     });
+  }
+
+  function renderReportBoundaries(){
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const layer = document.createElementNS(svgNS, 'svg');
+    layer.classList.add('report-boundaries');
+    layer.setAttribute('aria-hidden', 'true');
+    layer.setAttribute('viewBox', `0 0 ${canvasWidth} ${canvasHeight}`);
+    const defs = document.createElementNS(svgNS, 'defs');
+    const filter = document.createElementNS(svgNS, 'filter');
+    filter.id = 'reportEdgeGlow';
+    // 留足光晕空间，宽长框的短边也不会截断辉光。
+    filter.setAttribute('x', '-20%'); filter.setAttribute('y', '-20%');
+    filter.setAttribute('width', '140%'); filter.setAttribute('height', '140%');
+    const blur = document.createElementNS(svgNS, 'feGaussianBlur');
+    blur.setAttribute('stdDeviation', '2.4');
+    filter.appendChild(blur); defs.appendChild(filter); layer.appendChild(defs);
+    const groups = [
+      [26,27,28,29,30,31,32,33], // 检测报告 25–32
+      [47,69,48],                // 优惠检测报告 50–52
+      [55,56,57,58,59],          // 验收报告 60–64
+      [72,73]                   // 售后服务卡 65–66
+    ];
+    groups.flat().forEach(id => {
+      const node = map.get(id);
+      // 与卡片 1px 外边框的中心线及圆角重合，不额外外扩。
+      const x = node.x+.5, y = node.y+.5;
+      const width = cardWidth-1, height = cardHeight-1;
+      const radius = 7.5;
+      const group = document.createElementNS(svgNS, 'g');
+      group.dataset.steps = stepNumber(id);
+      const stroke = name => {
+        const rect = document.createElementNS(svgNS, 'rect');
+        rect.setAttribute('x', x); rect.setAttribute('y', y);
+        rect.setAttribute('width', width); rect.setAttribute('height', height);
+        rect.setAttribute('rx', radius); rect.setAttribute('pathLength', 1000);
+        rect.classList.add(name);
+        group.appendChild(rect);
+      };
+      stroke('report-flow-halo');
+      stroke('report-flow-base');
+      layer.appendChild(group);
+    });
+    canvas.appendChild(layer);
   }
 
   const fileFor = id => EXTRA_IMAGES[id] || LONG_IMAGES[id] || MASKED[id] || `${id>=23?"n":"s"}${String(id).padStart(2,"0")}.jpg`;
@@ -1050,6 +1106,7 @@ const zones = [
   renderZones();
   renderArrows();
   renderNodes();
+  renderReportBoundaries();
   window.addEventListener("load", fitWidthOnLoad);
 </script>
 </body>
