@@ -1,0 +1,210 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>美团渠道订单 · 安心生活支付调整</title><style>
+:root{--red:#c43832;--ink:#30343b;--muted:#69717c;--line:#d5d8dc;--canvas-width:1740px;font:14px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:#f5f6f7}
+*{box-sizing:border-box}body{margin:0}button{font:inherit}#extent{position:relative}#canvas{width:var(--canvas-width);padding:42px 48px 60px;background:white;transform-origin:top left;position:absolute;left:0;top:0}
+h1{font-size:28px;line-height:1.4;margin:0 0 16px;font-weight:700;letter-spacing:.2px}h2{font-size:21px;line-height:1.5;margin:0 0 22px;display:flex;gap:12px;align-items:baseline}h2>span{font-size:13px;color:#838993;font-weight:500}h3{font-size:16px;margin:0 0 14px}p{margin:0 0 10px}p:last-child{margin-bottom:0}b,strong{font-weight:650}.muted{color:var(--muted)}.red{color:var(--red)}.lead{font-size:16px;max-width:1400px;line-height:1.85;margin-bottom:24px}
+.section{position:relative;margin-top:40px;padding-top:30px;border-top:1px solid #ddd}.section:first-of-type{margin-top:26px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:36px}.rule-box{border:1px dashed #aeb5bd;padding:20px 24px}.statement{border-left:3px solid var(--red);padding:14px 20px;background:#fff9f8;font-size:16px;max-width:1508px}
+table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px}th,td{border:1px solid var(--line);padding:13px 16px;vertical-align:top;text-align:left;overflow-wrap:anywhere}th{background:#f4f5f6;font-weight:650}td p{margin:0 0 6px}code{font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#4d5662;overflow-wrap:anywhere}ul,ol{padding-left:21px;margin:0}li+li{margin-top:8px}
+.diagram{position:relative;isolation:isolate;width:1644px}.connectors{position:absolute;inset:0;pointer-events:none;z-index:0}.connectors>path{stroke-width:1.7;fill:none}.shot{position:absolute;margin:0;z-index:1}.screen{position:relative;line-height:0}.screen img{display:block;width:100%;height:auto;border:1px solid #e0e3e7;cursor:zoom-in}.shot figcaption{padding-top:12px;line-height:1.6;font-size:14px}.shot figcaption strong{font-size:15px}.shot figcaption p{color:#69717c;font-size:13px;margin-top:5px}.hotspot{position:absolute;border:3px solid var(--red);border-radius:9px;pointer-events:none;box-shadow:0 0 0 2px #fff9}.node{position:absolute;z-index:1;border:1px solid #858b94;background:white;padding:18px 22px;display:flex;justify-content:center;flex-direction:column;line-height:1.7;font-size:14px}.node strong{font-size:17px;margin-bottom:8px}.node.changed{border:2px solid var(--red);background:#fffafa}.change-index{font-size:12px;color:var(--red);margin-bottom:8px}.edge-label{position:absolute;z-index:2;transform:translate(-50%,-50%);background:white;padding:3px 8px;font-size:13px;white-space:nowrap}.note{position:absolute;z-index:1;font-size:13px;color:#69717c;text-align:center;line-height:1.8}.note.dashed{border:1px dashed #aeb5bd;padding:16px 20px;background:#fff}.path-label{position:absolute;z-index:1;font-size:15px;font-weight:650;border-bottom:2px solid #9298a0;padding-bottom:5px}
+.scope-layout{display:grid;grid-template-columns:245px 1fr;gap:40px}.scope-screenshot{position:relative;min-height:540px}.reference{margin:0}.reference img{display:block;width:1508px;height:auto;border:1px solid #e1e4e8;cursor:zoom-in}.reference figcaption{font-size:13px;color:#69717c;margin-top:12px;max-width:1480px}details{margin-top:22px;border:1px solid #d5d8dc;padding:14px 18px}summary{cursor:pointer;font-weight:600}details .refs{padding-top:14px}.refs p{margin-bottom:10px}.refs code{font-size:12px}a{color:#315f91;text-underline-offset:3px}.block-note{font-size:13px;color:#69717c;margin:12px 0 0}
+#tools{position:fixed;right:16px;top:16px;z-index:20;display:flex;align-items:center;background:#fff;border:1px solid #d0d4da;border-radius:7px;box-shadow:0 2px 10px #0001;padding:3px;user-select:none}#tools button{border:0;background:transparent;width:34px;height:32px;display:grid;place-items:center;border-radius:4px;cursor:pointer;color:#424b57}#tools button:hover{background:#eef0f3}#tools svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5}#zoom-value{font-size:12px;color:#59616d;min-width:44px;text-align:center}
+dialog{border:1px solid #cbd0d7;border-radius:8px;padding:0;width:min(1320px,96vw);max-width:96vw;max-height:94vh;overflow:auto;box-shadow:0 12px 60px #0005}dialog::backdrop{background:#151a22b8}.modal-head{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #ddd;background:#fff;z-index:2}.modal-head strong{font-size:14px}.modal-head button{width:32px;height:32px;border:1px solid #ddd;background:white;border-radius:4px;font-size:20px;cursor:pointer}dialog img{display:block;margin:0 auto;max-width:100%;height:auto}body.modal-open{overflow:hidden}
+#canvas :is(h1,h2,h3,p,li,th,td,.node,.edge-label,.rule-box,.note,figcaption,summary,code){user-select:text;-webkit-user-select:text}#canvas{cursor:default}.screen img:focus-visible,.reference img:focus-visible{outline:3px solid #315f91;outline-offset:4px}
+@media print{body{background:#fff}#tools{display:none}#canvas{position:static;transform:none!important}.section{break-inside:avoid}#extent{height:auto!important;width:auto!important}}
+
+/* Content sits directly on the continuous canvas surface. */
+html,body{width:100%;height:100%;overflow:hidden;background:#f6f7f9}
+#stage{position:fixed;inset:0;overflow:hidden;background-color:#f6f7f9;background-image:radial-gradient(circle,#dce1e7 .8px,transparent .9px);background-size:22px 22px;touch-action:none}
+#canvas{position:absolute;left:0;top:0;background:transparent;padding:42px 48px 60px;transform-origin:0 0;will-change:transform}
+.section{border-top-color:#cfd5dc}.statement{background:#fff9f8}.rule-box{background:#fff}.node{background:#fff}.edge-label{background:#f6f7f9}.note.dashed{background:#fff}.path-label{background:transparent}
+th{background:#eef1f5}td{background:#fff}details{background:#fff}
+#tools{gap:2px;padding:5px 7px;border-radius:9px;box-shadow:0 3px 14px #23334712}
+#tools button{width:auto;min-width:43px;height:32px;padding:0 10px;font-size:13px;line-height:1;white-space:nowrap}
+#tools button:focus-visible{outline:2px solid #315f91;outline-offset:1px}#zoom-value{min-width:45px;font-variant-numeric:tabular-nums}
+.tool-divider{width:1px;height:18px;background:#dde1e7;margin:0 5px}
+@media print{html,body{height:auto;overflow:visible;background:white}#stage{position:static;overflow:visible;background:white}#canvas{position:static;transform:none!important;background:white}#tools{display:none}}
+
+#tools{gap:2px;padding:5px;border-radius:9px}#tools button{width:36px;min-width:36px;height:36px;padding:7px}#tools svg{width:22px;height:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}#zoom-value{min-width:46px;font-size:12px}.tool-divider{margin:0 4px}
+
+#image-modal{width:max-content;max-width:94vw;max-height:94vh;overflow:hidden;background:#fff}#image-modal .modal-head{position:relative;min-height:56px;gap:32px;padding:10px 16px}#image-modal #preview-title{overflow-wrap:anywhere}#image-modal #close-modal{flex:none}#image-modal #preview{display:block;max-width:min(1320px,94vw - 2px);max-height:calc(94vh - 80px);width:auto;height:auto;object-fit:contain;margin:0 auto}
+
+.business-background{margin:0 0 24px}.business-background .lead{margin-bottom:18px}.background-exchange th{vertical-align:top}.background-scope{margin:18px 0 0;font-size:15px}
+
+#image-modal.has-flow{width:96vw;max-width:96vw;max-height:94vh}
+#payment-flow-preview[hidden]{display:none}
+#image-modal.has-flow #preview{display:none}
+#payment-flow-preview{--flow-shot-height:min(68vh,700px);overflow:auto;padding:20px 24px 16px;max-height:calc(94vh - 66px);overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#aeb7c3 #f0f2f5}
+.payment-flow-track{display:flex;align-items:flex-start;width:max-content;min-width:100%;justify-content:center}
+.payment-flow-shot{flex:none;width:calc(var(--flow-shot-height)*1206/2622);margin:0}
+#image-modal .payment-flow-shot img{display:block;width:100%;height:var(--flow-shot-height);max-width:none;max-height:none;object-fit:contain;border:1px solid #dfe3e8;margin:0;background:#fff}
+.payment-flow-shot figcaption{padding-top:12px;font-size:14px;line-height:1.6;color:#30343b;user-select:text}
+.payment-flow-link{flex:none;width:62px;height:var(--flow-shot-height);display:flex;align-items:center;justify-content:center;position:relative;color:#747d88;pointer-events:none}
+.payment-flow-link svg{width:52px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
+.payment-flow-link span{position:absolute;top:calc(50% - 34px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;background:#fff;padding:0 3px;color:#59616d}
+@media(max-width:600px){#payment-flow-preview{--flow-shot-height:min(62vh,620px);padding:16px}.payment-flow-link{width:54px}.payment-flow-shot figcaption{font-size:13px}}
+</style></head><body><div id="tools" aria-label="方案缩放"><button id="minus" aria-label="缩小" title="缩小"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2M7.5 10.5h6"/></svg></button><span id="zoom-value">100%</span><button id="plus" aria-label="放大" title="放大"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2M7.5 10.5h6m-3-3v6"/></svg></button><span class="tool-divider" aria-hidden="true"></span><button id="actual" aria-label="原始大小（100%）" title="原始大小（100%）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="m6.5 10 1.5-1v6m8-5 1.5-1v6"/><circle cx="12" cy="10" r=".65" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r=".65" fill="currentColor" stroke="none"/></svg></button><button id="fit" aria-label="适合宽度" title="适合宽度"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5v14M21 5v14M5.5 12h13M8.5 9l-3 3 3 3m7-6 3 3-3 3"/></svg></button></div><div id="stage" aria-label="产品方案"><main id="canvas">
+<h1>美团渠道订单 · 安心生活支付调整</h1>
+<div class="business-background" data-section="business-background">
+<p class="lead">支付宝安心生活与啄木鸟开展流量资源和支付流水互换：支付宝提供曝光与获客入口，啄木鸟将符合条件的服务订单引入安心生活付款，以增加服务订单和营收，并支持平台交易流水目标。</p>
+<table class="background-exchange"><colgroup><col style="width:18%"><col style="width:82%"></colgroup><tbody>
+<tr><th>支付宝提供什么</th><td>安心生活阵地、首页角标及生活缴费、青春特权、支付宝会员、首页 AI 搜五类曝光与获客入口；房屋维修相关搜索流量定向给啄木鸟。合作材料预计新增阵地日均曝光约 <strong>3000 万</strong>。</td></tr>
+<tr><th>我方投入什么</th><td>将美团渠道中<strong>未验券、走啄木鸟收款且用户选择支付宝支付</strong>的订单导入安心生活付款，为平台贡献交易流水。平台 12 月流水目标为 <strong>1000 万元</strong>，不等同于我方承诺贡献金额。</td></tr>
+<tr><th>预期带来什么收益</th><td>增加品牌曝光、团购购买和服务订单，带动营收。首页 AI 搜定向流量预计约 <strong>1.3 万单、195～208 万元营收</strong>（客单价 ¥150～160）；新增曝光入口另测算约 <strong>9750 单、146 万元营收</strong>（客单价 ¥150）。</td></tr>
+</tbody></table>
+
+
+</div>
+<div class="statement"><strong>一个业务改动点：</strong>美团渠道未验券订单在 H5「发起支付」选择支付宝时进入安心生活；首次验收与再次推送共用同一规则。</div>
+
+<section class="section" data-section="scope"><h2><span>01</span>适用范围与订单判断</h2>
+<div class="scope-layout"><div class="scope-screenshot"><figure class="shot" data-node="no-coupon-choice" style="left:0px;top:0px;width:210px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/no-coupon-choice-545c4c7e04.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/no-coupon-choice-545c4c7e04.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="现有「不验券」操作" tabindex="0" role="button" aria-label="放大查看：现有「不验券」操作" width="1206" height="2622"></div>
+      <figcaption><strong>现有「不验券」操作</strong><p>未验券走啄木鸟支付；是否买过券不影响分流</p></figcaption></figure></div><div>
+<table><colgroup><col style="width:18%"><col style="width:53%"><col style="width:29%"></colgroup><thead><tr><th>条件／场景</th><th>本期规则</th><th>判断要求</th></tr></thead><tbody>
+<tr><td>渠道</td><td>美团渠道订单。其他渠道沿用原支付路径。</td><td>按工单合作 ID 及合作层级识别美团渠道，复用现有美团合作判断；不按「A0 开头」匹配名称。</td></tr>
+<tr><td>券与收款归属</td><td><strong>已验券 → 美团平台收款；未验券 → 啄木鸟支付。</strong>买过券但本单未验券，也按未验券处理。</td><td>按本工单是否实际使用美团第三方券判断；不以是否买券作为条件。</td></tr>
+<tr><td>支付方式</td><td>美团渠道未验券、走啄木鸟支付时，选择支付宝进入安心生活；微信支付沿用原规则。</td><td>首次验收、重推消息进入后，执行同一分流逻辑。</td></tr>
+<tr><td>款项与金额</td><td>覆盖本流程中的服务剩余款收取；不扩展到订金、进度款等其他收款场景。支付金额由后台校验。</td><td>本期不改变报价、优惠或工程师收益计算规则。</td></tr>
+
+</tbody></table>
+<p class="block-note">「不验券」操作沿用现有 addUnUsedCouponTag；支付分流按本工单是否使用美团第三方券判断，不使用买券标记 1122／1123。</p>
+<p class="block-note" data-note="zmn-payment-definition">「啄木鸟支付」对应收款主体 <code>payPlat = PAY_PLAT_ZMN（10）</code>；CDS 渠道支付对应 <code>PAY_PLAT_CDS（400）</code>。支付宝、微信属于支付渠道，与收款主体分开判断。</p>
+</div></div></section>
+
+<section class="section" data-section="entry-flow"><h2><span>02</span>两条入口，汇入同一个支付 H5</h2>
+<div class="diagram" data-diagram="entry-flow" style="height:1420px"><svg class="connectors" width="1644" height="1420" viewBox="0 0 1644 1420" aria-hidden="true"><defs><marker id="entry-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="entry-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs><path data-edge="accept-report:payment-page" d="M256 303H594V472H710" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="collect:push-message" d="M256 1034H328" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="push-message:payment-page" d="M564 1034H624V718H710" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="payment-page:anxin-entry" d="M970 607H1098" stroke="#c43832" marker-end="url(#entry-red)"/><path data-edge="anxin-entry:pay-result" d="M1302 691V792" stroke="#c43832" marker-end="url(#entry-red)"/></svg><figure class="shot" data-node="accept-report" style="left:20px;top:64px;width:236px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/acceptance-report-4b332881f1.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/acceptance-report-4b332881f1.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="① 用户通过验收报告" tabindex="0" role="button" aria-label="放大查看：① 用户通过验收报告" width="1206" height="2622"></div>
+      <figcaption><strong>① 用户通过验收报告</strong><p>点击「验收通过，并支付」</p></figcaption></figure><figure class="shot" data-node="collect" style="left:20px;top:760px;width:236px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/engineer-collect-balance-ca7ead301d.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/engineer-collect-balance-ca7ead301d.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="② 工程师发起剩余款收取" tabindex="0" role="button" aria-label="放大查看：② 工程师发起剩余款收取" width="1206" height="2622"></div>
+      <figcaption><strong>② 工程师发起剩余款收取</strong><p>用户未付清时，点击「去收款（尾款）」</p></figcaption></figure><figure class="shot" data-node="push-message" style="left:328px;top:760px;width:236px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/engineer-push-payment-eb3463581a.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/engineer-push-payment-eb3463581a.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="③ 推送／再次推送支付消息" tabindex="0" role="button" aria-label="放大查看：③ 推送／再次推送支付消息" width="1206" height="2622"></div>
+      <figcaption><strong>③ 推送／再次推送支付消息</strong><p>用户打开消息后进入同一支付 H5</p></figcaption></figure><figure class="shot" data-node="payment-page" style="left:710px;top:310px;width:260px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="④ H5「发起支付」" tabindex="0" role="button" aria-label="放大查看：④ H5「发起支付」" width="1206" height="2622"><span class="hotspot" style="left:8%;top:54.7%;width:84%;height:6.3%" aria-hidden="true"></span></div>
+      <figcaption><strong>④ H5「发起支付」</strong><p>统一修改支付宝支付分流；微信沿用原路径</p></figcaption></figure><div class="path-label" style="left:20px;top:15px">首次验收付款</div>
+<div class="path-label" style="left:20px;top:710px">未付清／再次推送</div>
+<span class="edge-label" style="left:441px;top:303px">验收通过</span>
+<span class="edge-label" style="left:624px;top:923px">打开支付消息</span>
+<div class="note" style="left:710px;top:216px;width:260px">两条入口复用同一支付页<br><code>/report/pay</code></div>
+<div class="node changed" data-node="anxin-entry" style="left:1098px;top:523px;width:410px;min-height:168px;text-align:left;align-items:flex-start">
+ <span class="change-index">改动 1</span><strong>支付宝支付统一分流</strong>
+ <p>美团合作渠道＋本单未使用美团第三方券 → 创建安心生活尾款单，取得支付链接并跳转。</p>
+ <p>未命中 → 沿用现有支付宝支付。</p></div>
+<span class="edge-label red" style="left:1036px;top:607px">支付宝</span>
+<div class="node" data-node="pay-result" style="left:1098px;top:792px;width:410px;min-height:112px;text-align:left;align-items:flex-start"><strong>支付结果回到原工单</strong><p>核实支付成功后记入原订单收款；是否完成工单仍按现有完成校验处理。</p></div>
+<div class="note dashed" style="left:1098px;top:955px;width:410px">工程师侧的「推送支付消息」作为原有入口保留；此处不另建一套收款流程。</div>
+<div class="note" style="left:20px;top:1380px;width:1488px;text-align:left">图中 ¥139.50 为测试单示例；实际支付使用后台校验后的剩余应收金额。</div></div></section>
+
+<section class="section" data-section="payment-path"><h2><span>03</span>支付宝支付：创建尾款单取得链接，平台承接后续页面</h2>
+<div class="diagram" data-diagram="environment-flow" style="height:710px"><svg class="connectors" width="1644" height="710" viewBox="0 0 1644 710" aria-hidden="true"><defs><marker id="env-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="env-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs>
+<path data-edge="wx-pay:browser-pay" d="M240 290H307" stroke="#7b8188" marker-end="url(#env-gray)"/>
+<path data-edge="browser-pay:anxin-route" d="M527 290H600" stroke="#c43832" marker-end="url(#env-red)"/>
+<path data-edge="anxin-route:alipay-open" d="M910 290H970" stroke="#c43832" marker-end="url(#env-red)"/>
+<path data-edge="alipay-open:platform-pages" d="M1190 290H1250" stroke="#7b8188" marker-end="url(#env-gray)"/>
+<path data-edge="alipay-direct:anxin-route" d="M755 435V380" stroke="#c43832" marker-end="url(#env-red)"/></svg><figure class="shot" data-node="wx-pay" style="left:20px;top:45px;width:220px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="微信内支付页" tabindex="0" role="button" aria-label="放大查看：微信内支付页" width="1206" height="2622"><span class="hotspot" style="left:8%;top:54.7%;width:84%;height:6.3%" aria-hidden="true"></span></div>
+      <figcaption><strong>微信内支付页</strong><p>选择支付宝后，按原方式引导到浏览器</p></figcaption></figure><figure class="shot" data-node="browser-pay" style="left:307px;top:45px;width:220px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/browser-payment-page-913a7f39a3.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/browser-payment-page-913a7f39a3.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="浏览器支付页" tabindex="0" role="button" aria-label="放大查看：浏览器支付页" width="1206" height="2622"><span class="hotspot" style="left:8%;top:50.5%;width:84%;height:6.3%" aria-hidden="true"></span></div>
+      <figcaption><strong>浏览器支付页</strong><p>命中条件后创建尾款单，取得支付链接</p></figcaption></figure><figure class="shot" data-node="alipay-open" style="left:970px;top:45px;width:220px">
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/launch-alipay-4ca6020a18.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/launch-alipay-4ca6020a18.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="系统唤起支付宝" tabindex="0" role="button" aria-label="放大查看：系统唤起支付宝" width="1206" height="2622"></div>
+      <figcaption><strong>系统唤起支付宝</strong><p>打开目标链接，唤起支付宝并进入安心生活</p></figcaption></figure>
+<div class="node changed" data-node="anxin-route" style="left:600px;top:160px;width:310px;min-height:220px;text-align:left;align-items:flex-start"><span class="change-index">支付分流改动</span><strong>判断条件，取得尾款支付链接</strong><p>用户选择支付宝时，判断美团合作渠道＋本单未使用美团第三方券。</p><p>同时满足 → 创建安心生活尾款单，使用返回的支付链接跳转；否则 → 沿用原支付路径。</p></div>
+<div class="note dashed" data-node="alipay-direct" style="left:600px;top:435px;width:310px;text-align:left">若已在支付宝内打开本方 H5，点击支付宝支付后也进入上方同一分流／建单／跳转逻辑。</div>
+<div class="node" data-node="platform-pages" style="left:1250px;top:160px;width:350px;min-height:220px;text-align:left;align-items:flex-start"><strong>流量侧小程序／支付宝平台页面</strong><p>如需账号授权，由平台处理。</p><p>展示尾款费用明细 → 用户确认并支付 → 付款后可查看平台订单。</p></div>
+<div class="note dashed" style="left:1250px;top:435px;width:350px;text-align:left">创建尾款接口返回本笔尾款单的支付链接，后续页面由支付宝平台承接。链接对应本笔尾款单，不使用固定通用小程序地址。</div>
+<div class="note" style="left:20px;top:660px;width:1580px;text-align:left">本方直接使用支付链接进入；不在用户端展示二维码，不再串入原来的支付宝支付页让用户重复点击。</div></div>
+<div class="two-col"><div class="rule-box"><h3>交付侧负责</h3><p>按合作渠道及本工单美团第三方券使用情况分流，在支付宝支付动作中获取本笔尾款单的支付链接并跳转。</p><p>报价、服务、验收与工程师推送流程沿用现有逻辑；支付后继续现有收款结果及工单完成校验。</p></div><div class="rule-box"><h3>安心生活支付接入</h3><p>调用创建尾款接口，传入订单、金额和服务信息，取得尾款单 ID 及支付链接；将支付链接返回 H5。</p><p>后续授权、费用明细、确认支付及平台订单页面由支付宝平台承接。</p></div></div>
+</section>
+
+<section class="section" data-section="destination"><h2><span>04</span>安心生活承接效果参考</h2>
+<figure class="reference"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/anxin-platform-reference-24155b19f8.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/anxin-platform-reference-24155b19f8.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="合作方安心生活尾款参考：收款码、授权、费用明细与订单" tabindex="0" role="button" aria-label="放大查看安心生活尾款参考" width="1509" height="797"><figcaption>对接方反馈：后续页面由支付宝平台提供，本方无需为这些页面新增展示查询接口。首列二维码对应扫码入口；本期从 H5 点击支付链接进入平台承接页面。¥156 为合作方示例，具体样式以平台实际页面为准。</figcaption></figure>
+</section>
+
+<section class="section" data-section="delivery"><h2><span>05</span>开发改造与对接边界</h2>
+<table><colgroup><col style="width:17%"><col style="width:41%"><col style="width:24%"><col style="width:18%"></colgroup><thead><tr><th>位置</th><th>本期改造内容</th><th>衔接位置</th><th>协作侧</th></tr></thead><tbody>
+<tr><td>用户 H5 支付页</td><td>统一支付宝支付分流；覆盖微信转浏览器、外部浏览器唤起、支付宝内点击。</td><td><code>pay.vue</code> 支付动作与环境判断。</td><td>交付前端</td></tr>
+<tr><td>分流条件</td><td>美团合作渠道且本工单未使用美团第三方券时，支付宝支付进入安心生活建单及跳转；其余沿用原路径。</td><td>复用合作渠道及第三方券状态查询，沿用现有应收校验。</td><td>交付前后端</td></tr>
+<tr><td>支付宝平台页面</td><td>账号授权、尾款费用明细、确认支付及平台订单页面由支付宝提供；我方不开发这些页面或新增展示查询接口。</td><td>使用尾款支付链接进入平台页面。</td><td>支付宝平台</td></tr>
+<tr><td>安心生活尾款接入</td><td>调用创建尾款接口，传入本方订单、应收金额与服务信息；取得尾款单 ID 及本笔订单的支付链接。</td><td>将返回的 <code>tail_payment_order_pay_url</code> 交给 H5 跳转。</td><td>支付接入侧</td></tr>
+<tr><td>支付结果衔接</td><td>联合验收安心生活支付成功后，原工单收款结果与工程师端展示一致，继续执行现有工单完成校验。</td><td>支付结果、原订单收款记录与工单状态。</td><td>流量侧＋交付侧</td></tr>
+<tr><td>工程师 App</td><td>本期两条已确认入口继续复用原有验收与推送流程，不单独新增安心生活操作页。</td><td>「去收款」与「推送支付消息」。</td><td>交付客户端核对回归</td></tr>
+</tbody></table>
+<div class="two-col" style="margin-top:24px"><div class="rule-box"><h3>创建尾款与支付链接</h3>
+<p><a href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.tailpayment.create" target="_blank" rel="noopener">alipay.commerce.merchantcard.tailpayment.create</a></p>
+<p>文档支持 <code>main_order_type=MERCHANT</code>，可使用商户自有订单号，并传已开通的三级类目。创建后返回 <code>tail_payment_id</code> 与 <code>tail_payment_order_pay_url</code>，H5 使用返回链接进入本笔尾款支付页面。</p><p>金额由本方分转换为元；服务描述通过 <code>service_desc</code> 传入，需展示的服务项目明细可通过 <code>service_programs</code> 传入。本方订单、支付记录与平台尾款单保持关联。</p>
+</div><div class="rule-box"><h3>支付成功验收</h3><p><a href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.order.notify" target="_blank" rel="noopener">安心生活订单状态通知</a>可通知尾款订单支付状态。</p><p>页面返回、用户关闭支付宝或跳转成功不作为收款成功依据；以后端核实结果更新原订单。</p></div></div>
+<details><summary>开发定位参考</summary><div class="refs">
+<p><strong>H5：</strong><code>zmn-mapp-page/src/views/report/children/pay.vue</code><br><code>getPayConfig → handleType2 → h5AliPay / aliPay</code>。当前先请求支付参数，再进入环境分支；接入时统一选择目标链接，避免切换目标后仍创建原路径支付单。</p>
+<p><strong>H5 接口：</strong><code>zmn-mapp-page/src/service/api/report.js</code><br><code>servWorkPay</code>、<code>getServWorkAlipayPayUrl2</code>、<code>queryPayResult</code>。</p>
+<p><strong>美团渠道识别：</strong><code>ServWorkPayBServiceImpl#setMeiTuanCooperation</code> 按合作父级判断，使用配置项 <code>mei.tuan.oneL.level.cooperation.id</code>。</p>
+<p><strong>第三方券查询参考：</strong><code>PmsRemoteManager#listBindCouponByServWorkId</code> 可查询工单关联美团券；分流使用本工单的实际使用状态。</p>
+<p><strong>交付后端：</strong><code>zmn-biz-serv-work-delivery/.../business/impl/pay/ServWorkPayBServiceImpl.java</code><br><code>listPayMode</code>、<code>doPushPayMessage</code>、<code>getServWorkAlipayPayUrl</code>、<code>handlePayResultNotice</code>。</p>
+<p><strong>工程师端：</strong><code>zmn-engineer-flutter/lib/modules/order_pay/wait_user_pay/logic.dart</code> 的 <code>pushPayMessage</code>；<code>order_action/widget/order_bottom_btn.dart</code> 的不验券操作。</p>
+
+</div></details>
+</section>
+
+<section class="section" data-section="acceptance"><h2><span>06</span>场景验收</h2>
+<table><colgroup><col style="width:8%"><col style="width:40%"><col style="width:52%"></colgroup><thead><tr><th>编号</th><th>条件与操作</th><th>预期结果</th></tr></thead><tbody>
+<tr><td>01</td><td>美团渠道未验券、走啄木鸟支付，用户从验收报告进入并选择支付宝。</td><td>进入安心生活尾款支付；订单、服务内容与后台应收对应正确。</td></tr>
+<tr><td>02</td><td>美团渠道未验券、走啄木鸟支付，工程师再次推送后用户选择支付宝。</td><td>进入同一安心生活支付能力，按最新剩余应收收取，不产生重复收款。</td></tr>
+<tr><td>03</td><td>分别在微信、外部浏览器、支付宝内执行上述支付宝支付。</td><td>对应引导／唤起路径可达，命中条件时均进入安心生活；没有遗漏支付宝内直接支付分支。</td></tr>
+<tr><td>04</td><td>美团已验券、走美团平台收款，或其他渠道、选择微信支付。</td><td>沿用各自原路径；不被本期支付宝分流覆盖。</td></tr>
+<tr><td>05</td><td>用户取消、支付失败、重复点击或支付成功通知重复到达。</td><td>取消／失败不记成功；重复操作不重复收款，重复通知不重复入账；成功后原订单与工程师端结果一致。</td></tr>
+<tr><td>06</td><td>重推前发生部分收款、报价调整，或订单已经付清。</td><td>后台重新校验金额；已付清不再收取；改价后不允许旧支付单继续收取旧金额。</td></tr>
+<tr><td>07</td><td>用户已买券，但本单选择不验券，实际走啄木鸟支付并选择支付宝。</td><td>进入安心生活，与未买券且未验券的订单执行同一规则。</td></tr>
+<tr><td>08</td><td>用户打开创建尾款接口返回的支付链接，进入后续授权、费用明细及付款流程。</td><td>由支付宝平台页面承接；无需再次点击原本方支付宝支付页。平台尾款金额与本方应收一致。</td></tr>
+
+</tbody></table>
+
+</section>
+</main></div><dialog id="image-modal" aria-labelledby="preview-title"><div class="modal-head"><strong id="preview-title"></strong><button id="close-modal" aria-label="关闭图片">×</button></div><img id="preview" alt=""><div id="payment-flow-preview" tabindex="0" role="region" aria-label="现有支付宝小程序支付流程" hidden></div></dialog><template id="payment-flow-template"><div class="payment-flow-track"><figure class="payment-flow-shot"><img data-flow-primary alt="系统唤起支付宝" width="1206" height="2622"><figcaption>① 系统唤起支付宝</figcaption></figure><div class="payment-flow-link"><span>打开</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-mini-login-7db46d935e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-mini-login-7db46d935e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="小程序登录" width="1206" height="2622"><figcaption>② 小程序登录</figcaption></figure><div class="payment-flow-link"><span>授权登录</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-phone-authorization-ebeadbb78c.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-phone-authorization-ebeadbb78c.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="手机号授权" width="1206" height="2622"><figcaption>③ 手机号授权</figcaption></figure><div class="payment-flow-link"><span>同意</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-mini-payment-1e993cd076.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-mini-payment-1e993cd076.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="小程序内发起支付" width="1206" height="2622"><figcaption>④ 小程序内发起支付</figcaption></figure><div class="payment-flow-link"><span>支付宝支付</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-cashier-a9e8bfb2ed.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-cashier-a9e8bfb2ed.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="支付宝收银台" width="1206" height="2622"><figcaption>⑤ 支付宝收银台</figcaption></figure></div></template>
+<script>
+const canvas=document.querySelector('#canvas'),stage=document.querySelector('#stage');
+const view={min:.1,max:2,step:1.2,x:24,y:24,scale:1};
+let frame=0,spaceHeld=false,drag=null,gesture=null,lastGesture=0;
+function draw(){frame=0;canvas.style.transform=`translate(${view.x}px,${view.y}px) scale(${view.scale})`;stage.style.backgroundSize=`${22*view.scale}px ${22*view.scale}px`;stage.style.backgroundPosition=`${view.x}px ${view.y}px`;document.querySelector('#zoom-value').textContent=Math.round(view.scale*100)+'%'}
+function paint(){if(!frame)frame=requestAnimationFrame(draw)}
+function zoom(next,x=innerWidth/2,y=innerHeight/2){next=Math.min(view.max,Math.max(view.min,next));const ratio=next/view.scale;view.x=x-(x-view.x)*ratio;view.y=y-(y-view.y)*ratio;view.scale=next;paint()}
+function fitWidth(){view.scale=Math.max(view.min,Math.min(1,(innerWidth-48)/canvas.offsetWidth));view.x=(innerWidth-canvas.offsetWidth*view.scale)/2;view.y=24;paint()}
+document.querySelector('#minus').onclick=()=>zoom(view.scale/view.step);
+document.querySelector('#plus').onclick=()=>zoom(view.scale*view.step);
+document.querySelector('#actual').onclick=()=>zoom(1);
+document.querySelector('#fit').onclick=fitWidth;
+const editable='input,textarea,select,[contenteditable="true"]';
+addEventListener('keydown',e=>{if(document.querySelector('#image-modal').open||e.target.closest(editable))return;if((e.metaKey||e.ctrlKey)&&['+','=','-','0'].includes(e.key)){e.preventDefault();if(e.key==='0')fitWidth();else zoom(e.key==='-'?view.scale/view.step:view.scale*view.step)}if(e.code==='Space'&&!e.target.closest('button,summary,a')){spaceHeld=true;e.preventDefault()}});
+addEventListener('keyup',e=>{if(e.code==='Space')spaceHeld=false});
+stage.addEventListener('wheel',e=>{if(document.querySelector('dialog').open)return;let dx=e.deltaX,dy=e.deltaY;const unit=e.deltaMode===1?16:e.deltaMode===2?innerHeight:1;dx*=unit;dy*=unit;e.preventDefault();if(e.ctrlKey||e.metaKey){if(gesture||performance.now()-lastGesture<250)return;zoom(view.scale*Math.exp(-Math.max(-100,Math.min(100,dy))*.01),e.clientX,e.clientY)}else{view.x-=dx;view.y-=dy;paint()}},{passive:false});
+stage.addEventListener('gesturestart',e=>{e.preventDefault();gesture={scale:view.scale};lastGesture=performance.now()},{passive:false});
+stage.addEventListener('gesturechange',e=>{if(!gesture)return;e.preventDefault();zoom(gesture.scale*e.scale,e.clientX||innerWidth/2,e.clientY||innerHeight/2);lastGesture=performance.now()},{passive:false});
+stage.addEventListener('gestureend',e=>{e.preventDefault();gesture=null;lastGesture=performance.now()},{passive:false});
+const selectable='h1,h2,h3,p,li,th,td,code,a,button,img,figcaption,.node,.edge-label,.note,.rule-box,.statement,.path-label,details';
+stage.addEventListener('pointerdown',e=>{if(e.button!==0&&e.button!==1)return;if(e.target.closest('button,a,input,textarea,select'))return;if(e.button===0&&!spaceHeld&&e.target.closest(selectable))return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,tx:view.x,ty:view.y};stage.setPointerCapture(e.pointerId);e.preventDefault();stage.style.cursor='grabbing'});
+stage.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;view.x=drag.tx+e.clientX-drag.x;view.y=drag.ty+e.clientY-drag.y;paint()});
+function endDrag(){drag=null;stage.style.cursor=''}stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);addEventListener('blur',()=>{endDrag();spaceHeld=false;gesture=null});
+const modal=document.querySelector('#image-modal'),preview=document.querySelector('#preview'),previewTitle=document.querySelector('#preview-title');let origin;
+const paymentFlowPreview=document.querySelector('#payment-flow-preview');
+function setPreviewSource(target,source){
+ target.dataset.rawSrc=source.dataset.rawSrc||'';
+ target.onerror=()=>{target.onerror=null;if(target.dataset.rawSrc)target.src=target.dataset.rawSrc};
+ target.src=source.src;
+}
+function openImage(el){
+ origin=el;
+ const hasFlow=Boolean(el.closest('[data-node="alipay-open"]'));
+ modal.classList.toggle('has-flow',hasFlow);
+ paymentFlowPreview.hidden=!hasFlow;
+ paymentFlowPreview.replaceChildren();
+ if(hasFlow){
+  paymentFlowPreview.append(document.querySelector('#payment-flow-template').content.cloneNode(true));
+  setPreviewSource(paymentFlowPreview.querySelector('[data-flow-primary]'),el);
+  preview.removeAttribute('src');
+  previewTitle.textContent='系统唤起支付宝 · 现有支付路径';
+ }else{
+  setPreviewSource(preview,el);preview.alt=el.alt;previewTitle.textContent=el.alt;
+ }
+ modal.showModal();modal.scrollTop=0;paymentFlowPreview.scrollLeft=0;paymentFlowPreview.scrollTop=0;
+ document.body.classList.add('modal-open');document.querySelector('#close-modal').focus({preventScroll:true});
+}
+document.querySelectorAll('.screen img,.reference img').forEach(el=>{el.onclick=()=>openImage(el);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openImage(el)}}});
+document.querySelector('#close-modal').onclick=()=>modal.close();modal.addEventListener('click',e=>{const r=modal.getBoundingClientRect();if(e.target===modal&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))modal.close()});modal.addEventListener('close',()=>{document.body.classList.remove('modal-open');paymentFlowPreview.replaceChildren();paymentFlowPreview.hidden=true;modal.classList.remove('has-flow');origin?.focus({preventScroll:true})});
+new ResizeObserver(paint).observe(canvas);addEventListener('load',paint);fitWidth();draw();
+</script></body></html>
