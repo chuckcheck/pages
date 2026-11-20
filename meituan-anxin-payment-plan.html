@@ -41,6 +41,10 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 .payment-flow-link svg{width:52px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
 .payment-flow-link span{position:absolute;top:calc(50% - 34px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;background:#fff;padding:0 3px;color:#59616d}
 @media(max-width:600px){#payment-flow-preview{--flow-shot-height:min(62vh,620px);padding:16px}.payment-flow-link{width:54px}.payment-flow-shot figcaption{font-size:13px}}
+
+.coupon-branches{display:flex;width:max-content;min-width:100%;justify-content:center;align-items:flex-start;gap:56px}.coupon-branch{flex:none}.coupon-branch h3{margin:0 0 12px;font-size:16px}.coupon-branch .payment-flow-track{min-width:0}
+
+.api-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}.api-heading h3{margin:0!important}.doc-link{display:inline-flex;align-items:center;gap:7px;flex:none;padding:5px 11px;border:1px solid #9bbce8;border-radius:4px;background:#edf5ff;color:#1457a6;font-size:12px;font-weight:600;line-height:1.5;text-decoration:none;cursor:pointer}.doc-link:hover{background:#dcecff;border-color:#518ed4}.doc-link:focus-visible{outline:2px solid #1457a6;outline-offset:3px}.doc-link svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 </style></head><body><div id="tools" aria-label="方案缩放"><button id="minus" aria-label="缩小" title="缩小"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2M7.5 10.5h6"/></svg></button><span id="zoom-value">100%</span><button id="plus" aria-label="放大" title="放大"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2M7.5 10.5h6m-3-3v6"/></svg></button><span class="tool-divider" aria-hidden="true"></span><button id="actual" aria-label="原始大小（100%）" title="原始大小（100%）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="m6.5 10 1.5-1v6m8-5 1.5-1v6"/><circle cx="12" cy="10" r=".65" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r=".65" fill="currentColor" stroke="none"/></svg></button><button id="fit" aria-label="适合宽度" title="适合宽度"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5v14M21 5v14M5.5 12h13M8.5 9l-3 3 3 3m7-6 3 3-3 3"/></svg></button></div><div id="stage" aria-label="产品方案"><main id="canvas">
 <h1>美团渠道订单 · 安心生活支付调整</h1>
 <div class="business-background" data-section="business-background">
@@ -53,15 +57,15 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 
 
 </div>
-<div class="statement"><strong>一个业务改动点：</strong>美团渠道未验券订单在 H5「发起支付」选择支付宝时进入安心生活；首次验收与再次推送共用同一规则。</div>
+<div class="statement"><strong>一个业务改动点：</strong>美团渠道未验券订单在啄木鸟「发起支付」页选择支付宝时进入安心生活；首次验收与再次推送共用同一规则。</div>
 
 <section class="section" data-section="scope"><h2><span>01</span>适用范围与订单判断</h2>
 <div class="scope-layout"><div class="scope-screenshot"><figure class="shot" data-node="no-coupon-choice" style="left:0px;top:0px;width:210px">
-      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/no-coupon-choice-545c4c7e04.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/no-coupon-choice-545c4c7e04.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="现有「不验券」操作" tabindex="0" role="button" aria-label="放大查看：现有「不验券」操作" width="1206" height="2622"></div>
-      <figcaption><strong>现有「不验券」操作</strong><p>未验券走啄木鸟支付；是否买过券不影响分流</p></figcaption></figure></div><div>
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/no-coupon-choice-545c4c7e04.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/no-coupon-choice-545c4c7e04.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="不验券" tabindex="0" role="button" aria-label="放大查看：不验券" width="1206" height="2622"></div>
+      <figcaption><strong>不验券</strong></figcaption></figure></div><div>
 <table><colgroup><col style="width:18%"><col style="width:53%"><col style="width:29%"></colgroup><thead><tr><th>条件／场景</th><th>本期规则</th><th>判断要求</th></tr></thead><tbody>
 <tr><td>渠道</td><td>美团渠道订单。其他渠道沿用原支付路径。</td><td>按工单合作 ID 及合作层级识别美团渠道，复用现有美团合作判断；不按「A0 开头」匹配名称。</td></tr>
-<tr><td>券与收款归属</td><td><strong>已验券 → 美团平台收款；未验券 → 啄木鸟支付。</strong>买过券但本单未验券，也按未验券处理。</td><td>按本工单是否实际使用美团第三方券判断；不以是否买券作为条件。</td></tr>
+<tr><td>美团外部券</td><td>本单已使用美团外部券，沿用原支付路径；本单未使用时，在现有啄木鸟收款 H5 内按本期规则分流。买过券但本单未使用，不视为已用券。</td><td>按本工单的实际用券记录判断；不以是否买券或「不验券」操作标签作为条件。</td></tr>
 <tr><td>支付方式</td><td>美团渠道未验券、走啄木鸟支付时，选择支付宝进入安心生活；微信支付沿用原规则。</td><td>首次验收、重推消息进入后，执行同一分流逻辑。</td></tr>
 <tr><td>款项与金额</td><td>覆盖本流程中的服务剩余款收取；不扩展到订金、进度款等其他收款场景。支付金额由后台校验。</td><td>本期不改变报价、优惠或工程师收益计算规则。</td></tr>
 
@@ -70,72 +74,77 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 <p class="block-note" data-note="zmn-payment-definition">「啄木鸟支付」对应收款主体 <code>payPlat = PAY_PLAT_ZMN（10）</code>；CDS 渠道支付对应 <code>PAY_PLAT_CDS（400）</code>。支付宝、微信属于支付渠道，与收款主体分开判断。</p>
 </div></div></section>
 
-<section class="section" data-section="entry-flow"><h2><span>02</span>两条入口，汇入同一个支付 H5</h2>
-<div class="diagram" data-diagram="entry-flow" style="height:1420px"><svg class="connectors" width="1644" height="1420" viewBox="0 0 1644 1420" aria-hidden="true"><defs><marker id="entry-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="entry-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs><path data-edge="accept-report:payment-page" d="M256 303H594V472H710" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="collect:push-message" d="M256 1034H328" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="push-message:payment-page" d="M564 1034H624V718H710" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="payment-page:anxin-entry" d="M970 607H1098" stroke="#c43832" marker-end="url(#entry-red)"/><path data-edge="anxin-entry:pay-result" d="M1302 691V792" stroke="#c43832" marker-end="url(#entry-red)"/></svg><figure class="shot" data-node="accept-report" style="left:20px;top:64px;width:236px">
+<section class="section" data-section="entry-flow"><h2><span>02</span>两条入口，汇入啄木鸟「发起支付」页</h2>
+<div class="diagram" data-diagram="entry-flow" style="height:1420px"><svg class="connectors" width="1644" height="1420" viewBox="0 0 1644 1420" aria-hidden="true"><defs><marker id="entry-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker></defs><path data-edge="accept-report:payment-page" d="M256 303H594V472H710" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="collect:push-message" d="M256 1034H328" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="push-message:payment-page" d="M564 1034H624V718H710" stroke="#7b8188" marker-end="url(#entry-gray)"/><path data-edge="payment-page:pay-result" d="M970 607H1098" stroke="#7b8188" marker-end="url(#entry-gray)"/></svg><figure class="shot" data-node="accept-report" style="left:20px;top:64px;width:236px">
       <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/acceptance-report-4b332881f1.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/acceptance-report-4b332881f1.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="① 用户通过验收报告" tabindex="0" role="button" aria-label="放大查看：① 用户通过验收报告" width="1206" height="2622"></div>
       <figcaption><strong>① 用户通过验收报告</strong><p>点击「验收通过，并支付」</p></figcaption></figure><figure class="shot" data-node="collect" style="left:20px;top:760px;width:236px">
       <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/engineer-collect-balance-ca7ead301d.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/engineer-collect-balance-ca7ead301d.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="② 工程师发起剩余款收取" tabindex="0" role="button" aria-label="放大查看：② 工程师发起剩余款收取" width="1206" height="2622"></div>
       <figcaption><strong>② 工程师发起剩余款收取</strong><p>用户未付清时，点击「去收款（尾款）」</p></figcaption></figure><figure class="shot" data-node="push-message" style="left:328px;top:760px;width:236px">
       <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/engineer-push-payment-eb3463581a.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/engineer-push-payment-eb3463581a.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="③ 推送／再次推送支付消息" tabindex="0" role="button" aria-label="放大查看：③ 推送／再次推送支付消息" width="1206" height="2622"></div>
       <figcaption><strong>③ 推送／再次推送支付消息</strong><p>用户打开消息后进入同一支付 H5</p></figcaption></figure><figure class="shot" data-node="payment-page" style="left:710px;top:310px;width:260px">
-      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="④ H5「发起支付」" tabindex="0" role="button" aria-label="放大查看：④ H5「发起支付」" width="1206" height="2622"><span class="hotspot" style="left:8%;top:54.7%;width:84%;height:6.3%" aria-hidden="true"></span></div>
-      <figcaption><strong>④ H5「发起支付」</strong><p>统一修改支付宝支付分流；微信沿用原路径</p></figcaption></figure><div class="path-label" style="left:20px;top:15px">首次验收付款</div>
+      <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="④ 啄木鸟「发起支付」页" tabindex="0" role="button" aria-label="放大查看：④ 啄木鸟「发起支付」页" width="1206" height="2622"></div>
+      <figcaption><strong>④ 啄木鸟「发起支付」页</strong><p>选择支付宝或微信支付</p></figcaption></figure><div class="path-label" style="left:20px;top:15px">首次验收付款</div>
 <div class="path-label" style="left:20px;top:710px">未付清／再次推送</div>
 <span class="edge-label" style="left:441px;top:303px">验收通过</span>
 <span class="edge-label" style="left:624px;top:923px">打开支付消息</span>
-<div class="note" style="left:710px;top:216px;width:260px">两条入口复用同一支付页<br><code>/report/pay</code></div>
-<div class="node changed" data-node="anxin-entry" style="left:1098px;top:523px;width:410px;min-height:168px;text-align:left;align-items:flex-start">
- <span class="change-index">改动 1</span><strong>支付宝支付统一分流</strong>
- <p>美团合作渠道＋本单未使用美团第三方券 → 创建安心生活尾款单，取得支付链接并跳转。</p>
- <p>未命中 → 沿用现有支付宝支付。</p></div>
-<span class="edge-label red" style="left:1036px;top:607px">支付宝</span>
-<div class="node" data-node="pay-result" style="left:1098px;top:792px;width:410px;min-height:112px;text-align:left;align-items:flex-start"><strong>支付结果回到原工单</strong><p>核实支付成功后记入原订单收款；是否完成工单仍按现有完成校验处理。</p></div>
-<div class="note dashed" style="left:1098px;top:955px;width:410px">工程师侧的「推送支付消息」作为原有入口保留；此处不另建一套收款流程。</div>
-<div class="note" style="left:20px;top:1380px;width:1488px;text-align:left">图中 ¥139.50 为测试单示例；实际支付使用后台校验后的剩余应收金额。</div></div></section>
+<div class="note" style="left:710px;top:216px;width:260px">啄木鸟「发起支付」页<br><code>/report/pay</code></div>
+
+<span class="edge-label" style="left:1036px;top:607px">支付成功</span>
+<div class="node" data-node="pay-result" style="left:1098px;top:551px;width:410px;min-height:112px;text-align:left;align-items:flex-start"><strong>支付结果回到原工单</strong><p>核实支付成功后记入原订单收款；是否完成工单仍按现有完成校验处理。</p></div>
+
+</div></section>
 
 <section class="section" data-section="payment-path"><h2><span>03</span>支付宝支付：创建尾款单取得链接，平台承接后续页面</h2>
-<div class="diagram" data-diagram="environment-flow" style="height:710px"><svg class="connectors" width="1644" height="710" viewBox="0 0 1644 710" aria-hidden="true"><defs><marker id="env-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="env-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs>
-<path data-edge="wx-pay:browser-pay" d="M240 290H307" stroke="#7b8188" marker-end="url(#env-gray)"/>
-<path data-edge="browser-pay:anxin-route" d="M527 290H600" stroke="#c43832" marker-end="url(#env-red)"/>
-<path data-edge="anxin-route:alipay-open" d="M910 290H970" stroke="#c43832" marker-end="url(#env-red)"/>
-<path data-edge="alipay-open:platform-pages" d="M1190 290H1250" stroke="#7b8188" marker-end="url(#env-gray)"/>
-<path data-edge="alipay-direct:anxin-route" d="M755 435V380" stroke="#c43832" marker-end="url(#env-red)"/></svg><figure class="shot" data-node="wx-pay" style="left:20px;top:45px;width:220px">
+<div class="diagram" data-diagram="environment-flow" style="height:1110px"><svg class="connectors" width="1644" height="1110" viewBox="0 0 1644 1110" aria-hidden="true"><defs><marker id="env-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="env-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs>
+<path data-edge="wx-pay:browser-pay" d="M240 690H307" stroke="#7b8188" marker-end="url(#env-gray)"/>
+<path data-edge="browser-pay:anxin-route" d="M527 690H600" stroke="#c43832" marker-end="url(#env-red)"/>
+<path data-edge="anxin-route:alipay-open" d="M910 690H970" stroke="#c43832" marker-end="url(#env-red)"/>
+<path data-edge="alipay-open:platform-pages" d="M1190 690H1250" stroke="#7b8188" marker-end="url(#env-gray)"/>
+<path data-edge="alipay-direct:anxin-route" d="M755 835V794" stroke="#c43832" marker-end="url(#env-red)"/><path data-edge="routing-conditions:anxin-route" d="M755 536V560" stroke="#9298a0" stroke-dasharray="4 4"/><path data-edge="anxin-route:tailpayment-api" d="M910 590H940V200H970" stroke="#9298a0" stroke-dasharray="4 4"/></svg><aside class="tailpayment-api note dashed" data-node="tailpayment-api" style="left:970px;top:0;width:650px;text-align:left;padding:14px 18px;font-size:12px;line-height:1.6">
+<div class="api-heading"><h3 style="font-size:14px;color:var(--ink)">后台创建安心生活尾款单</h3><a class="doc-link" href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.tailpayment.create" target="_blank" rel="noopener" aria-label="查看创建尾款接口文档（新窗口）">查看接口文档<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M7 9l6-6"/></svg></a></div>
+<p style="margin-bottom:8px"><code>alipay.commerce.merchantcard.tailpayment.create</code></p>
+<table style="font-size:12px;line-height:1.5"><colgroup><col style="width:45%"><col style="width:55%"></colgroup><thead><tr><th style="padding:5px 8px">主要业务传参</th><th style="padding:5px 8px">传入内容</th></tr></thead><tbody>
+<tr><td style="padding:5px 8px"><code>main_order_type</code></td><td style="padding:5px 8px"><code>MERCHANT</code>，使用商户自有订单</td></tr>
+<tr><td style="padding:5px 8px"><code>main_order_id</code></td><td style="padding:5px 8px">本方主订单号，按字符串传入</td></tr>
+<tr><td style="padding:5px 8px"><code>tail_payment_order_price_yuan</code></td><td style="padding:5px 8px">后台校验的剩余应收金额，分转元</td></tr>
+<tr><td style="padding:5px 8px"><code>service_desc</code></td><td style="padding:5px 8px">本次尾款对应的服务描述</td></tr>
+<tr><td style="padding:5px 8px"><code>third_category_code</code></td><td style="padding:5px 8px">已开通的三级类目 code，本场景必传</td></tr>
+<tr><td style="padding:5px 8px"><code>out_order_id</code>（可选）</td><td style="padding:5px 8px">本方用于对账、追踪的订单编号</td></tr>
+<tr><td style="padding:5px 8px"><code>service_programs</code>（可选）</td><td style="padding:5px 8px">服务项目明细：名称、数量、单价（元）</td></tr>
+</tbody></table>
+<p style="margin-top:10px"><strong>成功返回：</strong><code>tail_payment_id</code>（尾款单 ID）、<code>tail_payment_order_pay_url</code>（本笔尾款支付链接）。</p>
+<p><strong>后续动作：</strong>保存本方订单／支付记录与尾款单的关联；将支付链接返回 H5，由 H5 跳转进入安心生活支付页。</p>
+</aside><aside class="routing-conditions note dashed" data-node="routing-conditions" style="left:600px;top:188px;width:310px;text-align:left;padding:14px 18px;font-size:12px;line-height:1.65">
+<h3 style="font-size:14px;margin-bottom:10px;color:var(--ink)">逻辑判断（同时满足）</h3>
+<p><strong>① 美团合作渠道</strong><br>取工单 <code>cooperationId</code> 查询合作信息，<code>parentId</code> 等于配置的美团一级合作 ID。复用现有结果：<br><code>meiTuanCooperation == 2</code></p>
+<p><strong>② 本单未使用美团外部券</strong><br>按 <code>servOrderId + sourceServWorkId</code> 查询工单优惠记录，不存在同时满足以下条件的记录：</p>
+<div style="margin:0 0 8px"><code>thirdCode == 2</code>（外部券）<br><code>thirdCouponPlat == 10</code>（美团）<br><code>salePrice != 0</code>（现有用券记录条件）</div>
+<p>买券／不验券标签不代替实际用券记录；查询失败不判为未用券。</p>
+</aside><figure class="shot" data-node="wx-pay" style="left:20px;top:445px;width:220px">
       <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/wechat-payment-page-626ea5952e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="微信内支付页" tabindex="0" role="button" aria-label="放大查看：微信内支付页" width="1206" height="2622"><span class="hotspot" style="left:8%;top:54.7%;width:84%;height:6.3%" aria-hidden="true"></span></div>
-      <figcaption><strong>微信内支付页</strong><p>选择支付宝后，按原方式引导到浏览器</p></figcaption></figure><figure class="shot" data-node="browser-pay" style="left:307px;top:45px;width:220px">
+      <figcaption><strong>微信内支付页</strong><p>选择支付宝后，按原方式引导到浏览器</p></figcaption></figure><figure class="shot" data-node="browser-pay" style="left:307px;top:445px;width:220px">
       <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/browser-payment-page-913a7f39a3.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/browser-payment-page-913a7f39a3.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="浏览器支付页" tabindex="0" role="button" aria-label="放大查看：浏览器支付页" width="1206" height="2622"><span class="hotspot" style="left:8%;top:50.5%;width:84%;height:6.3%" aria-hidden="true"></span></div>
-      <figcaption><strong>浏览器支付页</strong><p>命中条件后创建尾款单，取得支付链接</p></figcaption></figure><figure class="shot" data-node="alipay-open" style="left:970px;top:45px;width:220px">
+      <figcaption><strong>浏览器支付页</strong><p>命中条件后创建尾款单，取得支付链接</p></figcaption></figure><figure class="shot" data-node="alipay-open" style="left:970px;top:445px;width:220px">
       <div class="screen"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/launch-alipay-4ca6020a18.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/launch-alipay-4ca6020a18.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="系统唤起支付宝" tabindex="0" role="button" aria-label="放大查看：系统唤起支付宝" width="1206" height="2622"></div>
       <figcaption><strong>系统唤起支付宝</strong><p>打开目标链接，唤起支付宝并进入安心生活</p></figcaption></figure>
-<div class="node changed" data-node="anxin-route" style="left:600px;top:160px;width:310px;min-height:220px;text-align:left;align-items:flex-start"><span class="change-index">支付分流改动</span><strong>判断条件，取得尾款支付链接</strong><p>用户选择支付宝时，判断美团合作渠道＋本单未使用美团第三方券。</p><p>同时满足 → 创建安心生活尾款单，使用返回的支付链接跳转；否则 → 沿用原支付路径。</p></div>
-<div class="note dashed" data-node="alipay-direct" style="left:600px;top:435px;width:310px;text-align:left">若已在支付宝内打开本方 H5，点击支付宝支付后也进入上方同一分流／建单／跳转逻辑。</div>
-<div class="node" data-node="platform-pages" style="left:1250px;top:160px;width:350px;min-height:220px;text-align:left;align-items:flex-start"><strong>流量侧小程序／支付宝平台页面</strong><p>如需账号授权，由平台处理。</p><p>展示尾款费用明细 → 用户确认并支付 → 付款后可查看平台订单。</p></div>
-<div class="note dashed" style="left:1250px;top:435px;width:350px;text-align:left">创建尾款接口返回本笔尾款单的支付链接，后续页面由支付宝平台承接。链接对应本笔尾款单，不使用固定通用小程序地址。</div>
-<div class="note" style="left:20px;top:660px;width:1580px;text-align:left">本方直接使用支付链接进入；不在用户端展示二维码，不再串入原来的支付宝支付页让用户重复点击。</div></div>
-<div class="two-col"><div class="rule-box"><h3>交付侧负责</h3><p>按合作渠道及本工单美团第三方券使用情况分流，在支付宝支付动作中获取本笔尾款单的支付链接并跳转。</p><p>报价、服务、验收与工程师推送流程沿用现有逻辑；支付后继续现有收款结果及工单完成校验。</p></div><div class="rule-box"><h3>安心生活支付接入</h3><p>调用创建尾款接口，传入订单、金额和服务信息，取得尾款单 ID 及支付链接；将支付链接返回 H5。</p><p>后续授权、费用明细、确认支付及平台订单页面由支付宝平台承接。</p></div></div>
+<div class="node changed" data-node="anxin-route" style="left:600px;top:560px;width:310px;min-height:220px;text-align:left;align-items:flex-start"><span class="change-index">支付分流改动</span><strong>判断条件，取得尾款支付链接</strong><p>用户选择支付宝时，判断美团合作渠道＋本单未使用美团第三方券。</p><p>同时满足 → 创建安心生活尾款单，使用返回的支付链接跳转；否则 → 沿用原支付路径。</p></div>
+<div class="note dashed" data-node="alipay-direct" style="left:600px;top:835px;width:310px;text-align:left">若已在支付宝内打开啄木鸟「发起支付」页（<code>/report/pay</code>），点击「支付宝支付」后执行同一分流／建单／跳转逻辑。</div>
+<div class="node" data-node="platform-pages" style="left:1250px;top:560px;width:350px;min-height:220px;text-align:left;align-items:flex-start"><strong>安心生活尾款支付页（支付宝内）</strong><p>通过创建尾款接口返回的支付链接进入。</p><p>用户确认尾款费用明细，并完成支付宝支付。</p></div>
+<div class="note dashed" style="left:1250px;top:835px;width:350px;text-align:left">创建尾款接口返回本笔尾款单的支付链接，后续页面由支付宝平台承接。链接对应本笔尾款单，不使用固定通用小程序地址。</div>
+</div>
 </section>
 
 <section class="section" data-section="destination"><h2><span>04</span>安心生活承接效果参考</h2>
 <figure class="reference"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/anxin-platform-reference-24155b19f8.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/anxin-platform-reference-24155b19f8.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="合作方安心生活尾款参考：收款码、授权、费用明细与订单" tabindex="0" role="button" aria-label="放大查看安心生活尾款参考" width="1509" height="797"><figcaption>对接方反馈：后续页面由支付宝平台提供，本方无需为这些页面新增展示查询接口。首列二维码对应扫码入口；本期从 H5 点击支付链接进入平台承接页面。¥156 为合作方示例，具体样式以平台实际页面为准。</figcaption></figure>
 </section>
 
-<section class="section" data-section="delivery"><h2><span>05</span>开发改造与对接边界</h2>
-<table><colgroup><col style="width:17%"><col style="width:41%"><col style="width:24%"><col style="width:18%"></colgroup><thead><tr><th>位置</th><th>本期改造内容</th><th>衔接位置</th><th>协作侧</th></tr></thead><tbody>
-<tr><td>用户 H5 支付页</td><td>统一支付宝支付分流；覆盖微信转浏览器、外部浏览器唤起、支付宝内点击。</td><td><code>pay.vue</code> 支付动作与环境判断。</td><td>交付前端</td></tr>
-<tr><td>分流条件</td><td>美团合作渠道且本工单未使用美团第三方券时，支付宝支付进入安心生活建单及跳转；其余沿用原路径。</td><td>复用合作渠道及第三方券状态查询，沿用现有应收校验。</td><td>交付前后端</td></tr>
-<tr><td>支付宝平台页面</td><td>账号授权、尾款费用明细、确认支付及平台订单页面由支付宝提供；我方不开发这些页面或新增展示查询接口。</td><td>使用尾款支付链接进入平台页面。</td><td>支付宝平台</td></tr>
-<tr><td>安心生活尾款接入</td><td>调用创建尾款接口，传入本方订单、应收金额与服务信息；取得尾款单 ID 及本笔订单的支付链接。</td><td>将返回的 <code>tail_payment_order_pay_url</code> 交给 H5 跳转。</td><td>支付接入侧</td></tr>
-<tr><td>支付结果衔接</td><td>联合验收安心生活支付成功后，原工单收款结果与工程师端展示一致，继续执行现有工单完成校验。</td><td>支付结果、原订单收款记录与工单状态。</td><td>流量侧＋交付侧</td></tr>
-<tr><td>工程师 App</td><td>本期两条已确认入口继续复用原有验收与推送流程，不单独新增安心生活操作页。</td><td>「去收款」与「推送支付消息」。</td><td>交付客户端核对回归</td></tr>
-</tbody></table>
-<div class="two-col" style="margin-top:24px"><div class="rule-box"><h3>创建尾款与支付链接</h3>
-<p><a href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.tailpayment.create" target="_blank" rel="noopener">alipay.commerce.merchantcard.tailpayment.create</a></p>
-<p>文档支持 <code>main_order_type=MERCHANT</code>，可使用商户自有订单号，并传已开通的三级类目。创建后返回 <code>tail_payment_id</code> 与 <code>tail_payment_order_pay_url</code>，H5 使用返回链接进入本笔尾款支付页面。</p><p>金额由本方分转换为元；服务描述通过 <code>service_desc</code> 传入，需展示的服务项目明细可通过 <code>service_programs</code> 传入。本方订单、支付记录与平台尾款单保持关联。</p>
-</div><div class="rule-box"><h3>支付成功验收</h3><p><a href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.order.notify" target="_blank" rel="noopener">安心生活订单状态通知</a>可通知尾款订单支付状态。</p><p>页面返回、用户关闭支付宝或跳转成功不作为收款成功依据；以后端核实结果更新原订单。</p></div></div>
+<section class="section" data-section="delivery"><h2><span>05</span>支付结果与开发参考</h2>
+<div class="rule-box"><div class="api-heading"><h3>支付结果衔接</h3><a class="doc-link" href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.order.notify" target="_blank" rel="noopener" aria-label="查看安心生活订单状态通知文档（新窗口）">查看通知文档<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M7 9l6-6"/></svg></a></div><p>安心生活订单状态通知可通知尾款订单支付状态。后端核实支付成功后，更新原订单／工单收款及支付状态，工程师端展示保持一致；工单完成继续执行现有校验。</p><p>页面返回、用户关闭支付宝或跳转成功不作为收款成功依据。</p></div>
 <details><summary>开发定位参考</summary><div class="refs">
 <p><strong>H5：</strong><code>zmn-mapp-page/src/views/report/children/pay.vue</code><br><code>getPayConfig → handleType2 → h5AliPay / aliPay</code>。当前先请求支付参数，再进入环境分支；接入时统一选择目标链接，避免切换目标后仍创建原路径支付单。</p>
 <p><strong>H5 接口：</strong><code>zmn-mapp-page/src/service/api/report.js</code><br><code>servWorkPay</code>、<code>getServWorkAlipayPayUrl2</code>、<code>queryPayResult</code>。</p>
 <p><strong>美团渠道识别：</strong><code>ServWorkPayBServiceImpl#setMeiTuanCooperation</code> 按合作父级判断，使用配置项 <code>mei.tuan.oneL.level.cooperation.id</code>。</p>
-<p><strong>第三方券查询参考：</strong><code>PmsRemoteManager#listBindCouponByServWorkId</code> 可查询工单关联美团券；分流使用本工单的实际使用状态。</p>
+<p><strong>第三方券查询参考：</strong><code>ServOrderRemoteManager#listPreferentialByQuerySrcMaster</code> 按 <code>servOrderId + sourceServWorkId</code> 查询工单优惠记录；参考 <code>ServWorkCouponBServiceImpl#checkUsedCoupon</code> 的外部券记录过滤，并限定 <code>thirdCouponPlat=10</code>（美团）。</p>
 <p><strong>交付后端：</strong><code>zmn-biz-serv-work-delivery/.../business/impl/pay/ServWorkPayBServiceImpl.java</code><br><code>listPayMode</code>、<code>doPushPayMessage</code>、<code>getServWorkAlipayPayUrl</code>、<code>handlePayResultNotice</code>。</p>
 <p><strong>工程师端：</strong><code>zmn-engineer-flutter/lib/modules/order_pay/wait_user_pay/logic.dart</code> 的 <code>pushPayMessage</code>；<code>order_action/widget/order_bottom_btn.dart</code> 的不验券操作。</p>
 
@@ -143,20 +152,16 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 </section>
 
 <section class="section" data-section="acceptance"><h2><span>06</span>场景验收</h2>
-<table><colgroup><col style="width:8%"><col style="width:40%"><col style="width:52%"></colgroup><thead><tr><th>编号</th><th>条件与操作</th><th>预期结果</th></tr></thead><tbody>
-<tr><td>01</td><td>美团渠道未验券、走啄木鸟支付，用户从验收报告进入并选择支付宝。</td><td>进入安心生活尾款支付；订单、服务内容与后台应收对应正确。</td></tr>
-<tr><td>02</td><td>美团渠道未验券、走啄木鸟支付，工程师再次推送后用户选择支付宝。</td><td>进入同一安心生活支付能力，按最新剩余应收收取，不产生重复收款。</td></tr>
-<tr><td>03</td><td>分别在微信、外部浏览器、支付宝内执行上述支付宝支付。</td><td>对应引导／唤起路径可达，命中条件时均进入安心生活；没有遗漏支付宝内直接支付分支。</td></tr>
-<tr><td>04</td><td>美团已验券、走美团平台收款，或其他渠道、选择微信支付。</td><td>沿用各自原路径；不被本期支付宝分流覆盖。</td></tr>
-<tr><td>05</td><td>用户取消、支付失败、重复点击或支付成功通知重复到达。</td><td>取消／失败不记成功；重复操作不重复收款，重复通知不重复入账；成功后原订单与工程师端结果一致。</td></tr>
-<tr><td>06</td><td>重推前发生部分收款、报价调整，或订单已经付清。</td><td>后台重新校验金额；已付清不再收取；改价后不允许旧支付单继续收取旧金额。</td></tr>
-<tr><td>07</td><td>用户已买券，但本单选择不验券，实际走啄木鸟支付并选择支付宝。</td><td>进入安心生活，与未买券且未验券的订单执行同一规则。</td></tr>
-<tr><td>08</td><td>用户打开创建尾款接口返回的支付链接，进入后续授权、费用明细及付款流程。</td><td>由支付宝平台页面承接；无需再次点击原本方支付宝支付页。平台尾款金额与本方应收一致。</td></tr>
-
+<table><colgroup><col style="width:16%"><col style="width:36%"><col style="width:48%"></colgroup><thead><tr><th>场景</th><th>条件与操作</th><th>预期结果</th></tr></thead><tbody>
+<tr><td>分流与入口</td><td>美团渠道、本单未用美团外部券，在现有啄木鸟收款 H5 选择支付宝。</td><td>首次验收、重推消息及浏览器／支付宝内入口执行同一分流；已有小程序码进入同一 H5 时同样适用，进入安心生活支付。</td></tr>
+<tr><td>原路径保留</td><td>本单已使用美团外部券，或不属于本期支付宝尾款场景。</td><td>沿用原支付路径；是否买券及「不验券」标签不代替实际用券记录。</td></tr>
+<tr><td>建单与跳转</td><td>命中条件，调用创建尾款接口并取得支付链接。</td><td>订单、金额、服务及类目传参正确；返回尾款单与原订单关联，H5 跳转至对应支付页；建单失败不记收款成功。</td></tr>
+<tr><td>支付结果</td><td>用户付款成功、取消或失败；成功后直接退出支付宝。</td><td>以后端确认结果更新原订单／工单收款，工程师端结果一致；取消／失败不记成功，工单完成沿用现有校验。</td></tr>
+<tr><td>金额与防重</td><td>改价、部分收款、已付清，以及重复点击或重复通知。</td><td>按最新剩余应收收取；旧链接不产生重复或错误金额收款，同笔交易不重复入账。</td></tr>
 </tbody></table>
-
 </section>
 </main></div><dialog id="image-modal" aria-labelledby="preview-title"><div class="modal-head"><strong id="preview-title"></strong><button id="close-modal" aria-label="关闭图片">×</button></div><img id="preview" alt=""><div id="payment-flow-preview" tabindex="0" role="region" aria-label="现有支付宝小程序支付流程" hidden></div></dialog><template id="payment-flow-template"><div class="payment-flow-track"><figure class="payment-flow-shot"><img data-flow-primary alt="系统唤起支付宝" width="1206" height="2622"><figcaption>① 系统唤起支付宝</figcaption></figure><div class="payment-flow-link"><span>打开</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-mini-login-7db46d935e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-mini-login-7db46d935e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="小程序登录" width="1206" height="2622"><figcaption>② 小程序登录</figcaption></figure><div class="payment-flow-link"><span>授权登录</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-phone-authorization-ebeadbb78c.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-phone-authorization-ebeadbb78c.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="手机号授权" width="1206" height="2622"><figcaption>③ 手机号授权</figcaption></figure><div class="payment-flow-link"><span>同意</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-mini-payment-1e993cd076.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-mini-payment-1e993cd076.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="小程序内发起支付" width="1206" height="2622"><figcaption>④ 小程序内发起支付</figcaption></figure><div class="payment-flow-link"><span>支付宝支付</span><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/alipay-cashier-a9e8bfb2ed.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/alipay-cashier-a9e8bfb2ed.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="支付宝收银台" width="1206" height="2622"><figcaption>⑤ 支付宝收银台</figcaption></figure></div></template>
+<template id="coupon-flow-template"><div class="coupon-branches"><section class="coupon-branch"><h3>验券</h3><div class="payment-flow-track"><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/meituan-coupon-verification-634d387a5e.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/meituan-coupon-verification-634d387a5e.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="美团验券" width="1206" height="2622"></figure><div class="payment-flow-link"><svg viewBox="0 0 52 20" aria-hidden="true"><path d="M2 10h46m-7-6 7 6-7 6"/></svg></div><figure class="payment-flow-shot"><img src="https://cdn.jsdelivr.net/gh/chuckcheck/sop-images@main/meituan-anxin-payment/meituan-coupon-scanner-7a32c06d16.png" data-raw-src="https://raw.githubusercontent.com/chuckcheck/sop-images/main/meituan-anxin-payment/meituan-coupon-scanner-7a32c06d16.png" onerror="this.onerror=null;this.src=this.dataset.rawSrc" decoding="async" alt="扫码验券" width="1206" height="2622"></figure></div></section><section class="coupon-branch"><h3>不验券</h3><figure class="payment-flow-shot"><img data-flow-primary alt="不验券" width="1206" height="2622"></figure></section></div></template>
 <script>
 const canvas=document.querySelector('#canvas'),stage=document.querySelector('#stage');
 const view={min:.1,max:2,step:1.2,x:24,y:24,scale:1};
@@ -189,15 +194,21 @@ function setPreviewSource(target,source){
 }
 function openImage(el){
  origin=el;
- const hasFlow=Boolean(el.closest('[data-node="alipay-open"]'));
+ const flow=el.closest('[data-node="alipay-open"]')
+  ?{template:'payment-flow-template',title:'系统唤起支付宝 · 现有支付路径',label:'现有支付宝小程序支付流程'}
+  :el.closest('[data-node="no-coupon-choice"]')
+   ?{template:'coupon-flow-template',title:'验券与不验券',label:'验券与不验券分支'}
+   :null;
+ const hasFlow=Boolean(flow);
  modal.classList.toggle('has-flow',hasFlow);
  paymentFlowPreview.hidden=!hasFlow;
  paymentFlowPreview.replaceChildren();
  if(hasFlow){
-  paymentFlowPreview.append(document.querySelector('#payment-flow-template').content.cloneNode(true));
+  paymentFlowPreview.append(document.getElementById(flow.template).content.cloneNode(true));
+  paymentFlowPreview.setAttribute('aria-label',flow.label);
   setPreviewSource(paymentFlowPreview.querySelector('[data-flow-primary]'),el);
   preview.removeAttribute('src');
-  previewTitle.textContent='系统唤起支付宝 · 现有支付路径';
+  previewTitle.textContent=flow.title;
  }else{
   setPreviewSource(preview,el);preview.alt=el.alt;previewTitle.textContent=el.alt;
  }
