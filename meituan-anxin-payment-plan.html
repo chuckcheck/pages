@@ -157,7 +157,7 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 <div class="anxin-link-origin" style="border-top:1px solid #d5d8dc;margin-top:22px;padding-top:18px">
 <h4 style="margin:0 0 10px;color:var(--red);font-size:14px">安心生活路径（本期改动）</h4>
 <p><strong>① 交付校验工单与应收，判断是否命中</strong><br>命中后，后端调用 <a href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.tailpayment.create" target="_blank" rel="noopener" aria-label="查看安心生活创建尾款单接口文档"><code>alipay.commerce.merchantcard.tailpayment.create</code></a> 创建安心生活尾款单（接入团队待确认）。</p>
-<p><strong>② 保存尾款单与本方支付记录的关联</strong><br>平台返回 <code>tail_payment_id</code> 和 <code>tail_payment_order_pay_url</code>；后端保存关联，再将支付链接返回交付。传参见上方表格。</p>
+<p><strong>② 保存尾款单与本方支付记录的关联</strong><br>平台返回 <code>tail_payment_id</code> 和 <code>tail_payment_order_pay_url</code>；订单支付侧保存关联，再将支付链接返回交付。传参见上方表格。</p>
 <p><strong>③ 交付将支付链接返回 H5</strong><br>H5 打开返回的 URL，进入安心生活本笔尾款支付页，按平台要求完成授权、确认费用并支付。</p>
 <p><strong>④ 按现有支付分工接回付款结果</strong><br>现有支付通知接入方负责接收并核实安心生活通知；订单支付侧根据尾款单关联更新本方支付记录，发出工单支付结果消息；工单交付侧继续按现有消息处理收款结果。</p>
 <p style="border-left:2px solid #aeb5bd;padding-left:12px"><strong>对接确认：</strong>支付结果处理沿用现有职责；核对安心生活通知是否复用现有接收接口，以及尾款单关联、支付状态与现有消息的适配。创建尾款单接口的接入分工另行确认。</p>
