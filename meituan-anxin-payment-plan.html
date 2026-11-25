@@ -45,6 +45,20 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 .coupon-branches{display:flex;width:max-content;min-width:100%;justify-content:center;align-items:flex-start;gap:56px}.coupon-branch{flex:none}.coupon-branch h3{margin:0 0 12px;font-size:16px}.coupon-branch .payment-flow-track{min-width:0}
 
 .api-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px}.api-heading h3{margin:0!important}.doc-link{display:inline-flex;align-items:center;gap:7px;flex:none;padding:5px 11px;border:1px solid #9bbce8;border-radius:4px;background:#edf5ff;color:#1457a6;font-size:12px;font-weight:600;line-height:1.5;text-decoration:none;cursor:pointer}.doc-link:hover{background:#dcecff;border-color:#518ed4}.doc-link:focus-visible{outline:2px solid #1457a6;outline-offset:3px}.doc-link svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* Keep existing sections at their original width; extend only the payment comparison. */
+#canvas{--canvas-width:2410px}
+#canvas>h1,#canvas>.business-background,#canvas>.section{width:1644px}
+#canvas>.section[data-section="payment-path"],.diagram[data-diagram="environment-flow"]{width:2314px}
+.old-link-origin{text-align:left;font-size:13px;line-height:1.75}
+.old-link-origin h3{color:var(--ink);font-size:16px;margin-bottom:16px}
+.old-link-origin p+p{margin-top:16px}
+.old-link-origin strong{color:var(--ink)}
+
+.old-link-origin .anxin-link-origin,.old-link-origin .anxin-link-origin :is(h4,p,strong,code){color:var(--red)}
+.old-link-origin .anxin-link-origin p[style]{border-left-color:var(--red)!important}
+
+.old-link-origin .anxin-link-origin a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
 </style></head><body><div id="tools" aria-label="方案缩放"><button id="minus" aria-label="缩小" title="缩小"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2M7.5 10.5h6"/></svg></button><span id="zoom-value">100%</span><button id="plus" aria-label="放大" title="放大"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.3 15.3 5.2 5.2M7.5 10.5h6m-3-3v6"/></svg></button><span class="tool-divider" aria-hidden="true"></span><button id="actual" aria-label="原始大小（100%）" title="原始大小（100%）"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="m6.5 10 1.5-1v6m8-5 1.5-1v6"/><circle cx="12" cy="10" r=".65" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r=".65" fill="currentColor" stroke="none"/></svg></button><button id="fit" aria-label="适合宽度" title="适合宽度"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5v14M21 5v14M5.5 12h13M8.5 9l-3 3 3 3m7-6 3 3-3 3"/></svg></button></div><div id="stage" aria-label="产品方案"><main id="canvas">
 <h1>美团渠道订单 · 安心生活支付调整</h1>
 <div class="business-background" data-section="business-background">
@@ -95,7 +109,7 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 </div></section>
 
 <section class="section" data-section="payment-path"><h2><span>03</span>支付宝支付：创建尾款单取得链接，平台承接后续页面</h2>
-<div class="diagram" data-diagram="environment-flow" style="height:1110px"><svg class="connectors" width="1644" height="1110" viewBox="0 0 1644 1110" aria-hidden="true"><defs><marker id="env-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="env-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs>
+<div class="diagram" data-diagram="environment-flow" style="height:1340px"><svg class="connectors" width="1644" height="1340" viewBox="0 0 1644 1340" aria-hidden="true"><defs><marker id="env-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7b8188"/></marker><marker id="env-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#c43832"/></marker></defs>
 <path data-edge="wx-pay:browser-pay" d="M240 690H307" stroke="#7b8188" marker-end="url(#env-gray)"/>
 <path data-edge="browser-pay:anxin-route" d="M527 690H600" stroke="#c43832" marker-end="url(#env-red)"/>
 <path data-edge="anxin-route:alipay-open" d="M910 690H970" stroke="#c43832" marker-end="url(#env-red)"/>
@@ -130,7 +144,33 @@ th{background:#eef1f5}td{background:#fff}details{background:#fff}
 <div class="node changed" data-node="anxin-route" style="left:600px;top:560px;width:310px;min-height:220px;text-align:left;align-items:flex-start"><span class="change-index">支付分流改动</span><strong>判断条件，取得尾款支付链接</strong><p>用户选择支付宝时，判断美团合作渠道＋本单未使用美团第三方券。</p><p>同时满足 → 创建安心生活尾款单，使用返回的支付链接跳转；否则 → 沿用原支付路径。</p></div>
 <div class="note dashed" data-node="alipay-direct" style="left:600px;top:835px;width:310px;text-align:left">若已在支付宝内打开啄木鸟「发起支付」页（<code>/report/pay</code>），点击「支付宝支付」后执行同一分流／建单／跳转逻辑。</div>
 <div class="node" data-node="platform-pages" style="left:1250px;top:560px;width:350px;min-height:220px;text-align:left;align-items:flex-start"><strong>安心生活尾款支付页（支付宝内）</strong><p>通过创建尾款接口返回的支付链接进入。</p><p>用户确认尾款费用明细，并完成支付宝支付。</p></div>
-<div class="note dashed" style="left:1250px;top:835px;width:350px;text-align:left">创建尾款接口返回本笔尾款单的支付链接，后续页面由支付宝平台承接。链接对应本笔尾款单，不使用固定通用小程序地址。</div>
+
+<aside class="note dashed old-link-origin" data-node="old-link-origin" style="left:1664px;top:216px;width:650px;padding:20px 24px">
+<h3>两条路径：支付链接与支付结果</h3>
+<h4 style="margin:0 0 10px;color:var(--ink);font-size:14px">现有浏览器路径</h4>
+<p><strong>① H5 请求交付后台</strong><br>调用 <code>getServWorkAlipayPayUrl2</code>，传入工单 ID、金额、是否尾款及入口类型。</p>
+<p><strong>② 交付组装跳转信息，取得短链接</strong><br>交付后台将本单支付页地址放入啄木鸟支付宝小程序的 <code>src</code> 参数，加上小程序 <code>appId</code>，组成跳转链接；再调用内部短链接服务：<br><code>/base-shortlink/shortLinkModifyV2RemoteService/addShortLink</code></p>
+<p><strong>③ 交付把短链接返回 H5</strong><br>H5 打开链接，唤起支付宝并进入啄木鸟小程序；按需登录／授权后，打开本单「发起支付」页，再点击「支付宝支付」进入收银台。</p>
+
+<p><strong>④ 后台支付结果通知工单</strong><br>本方支付处理后，通过订单支付结果 MQ 消息通知交付；工单侧接收 <code>ServWorkPayResultEvent</code>。支付宝回调的具体接收接口及网关到订单支付的处理，尚未核实完整代码。</p>
+
+<div class="anxin-link-origin" style="border-top:1px solid #d5d8dc;margin-top:22px;padding-top:18px">
+<h4 style="margin:0 0 10px;color:var(--red);font-size:14px">安心生活路径（本期改动）</h4>
+<p><strong>① 交付校验工单与应收，判断是否命中</strong><br>命中后，后端调用 <a href="https://render.alipay.com/p/yuyan/180022670000125419/index.html#/api/alipay.commerce.merchantcard.tailpayment.create" target="_blank" rel="noopener" aria-label="查看安心生活创建尾款单接口文档"><code>alipay.commerce.merchantcard.tailpayment.create</code></a> 创建安心生活尾款单（接入团队待确认）。</p>
+<p><strong>② 保存尾款单与本方支付记录的关联</strong><br>平台返回 <code>tail_payment_id</code> 和 <code>tail_payment_order_pay_url</code>；后端保存关联，再将支付链接返回交付。传参见上方表格。</p>
+<p><strong>③ 交付将支付链接返回 H5</strong><br>H5 打开返回的 URL，进入安心生活本笔尾款支付页，按平台要求完成授权、确认费用并支付。</p>
+<p><strong>④ 按现有支付分工接回付款结果</strong><br>现有支付通知接入方负责接收并核实安心生活通知；订单支付侧根据尾款单关联更新本方支付记录，发出工单支付结果消息；工单交付侧继续按现有消息处理收款结果。</p>
+<p style="border-left:2px solid #aeb5bd;padding-left:12px"><strong>对接确认：</strong>支付结果处理沿用现有职责；核对安心生活通知是否复用现有接收接口，以及尾款单关联、支付状态与现有消息的适配。创建尾款单接口的接入分工另行确认。</p>
+</div>
+
+
+<div style="border-top:1px solid #d5d8dc;margin-top:22px;padding-top:18px">
+<h4 style="margin:0 0 10px;color:var(--ink);font-size:14px">工单交付侧共用的后续处理</h4>
+<p><code>ServWorkPayListener → handlePayResultNotice</code>：更新工单支付状态、同步订单支付金额、执行工单完成校验；符合入口条件时向订单通知 MQ 发送工程师通知。</p>
+<p>页面付款结果用于展示；原工单收款以后端支付结果为准。安心生活需完成上述消息衔接，才能复用这段处理。</p>
+</div>
+</aside>
+
 </div>
 </section>
 
