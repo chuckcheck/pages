@@ -434,7 +434,7 @@ function setPreviewSource(target,source){
 }
 function openImage(el,forceOldFlow=false){
  origin=el;
- const flow=forceOldFlow
+ const flow=(forceOldFlow||el.closest('[data-node="alipay-open"]'))
   ?{template:'payment-flow-template',title:'系统唤起支付宝 · 现有支付路径',label:'现有支付宝小程序支付流程'}
   :el.closest('[data-node="no-coupon-choice"]')
    ?{template:'coupon-flow-template',title:'验券与不验券',label:'验券与不验券分支'}
